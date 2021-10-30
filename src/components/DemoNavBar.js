@@ -88,7 +88,7 @@ function DemoNavbar() {
               <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                 <NavItem>
                   <NavLink to="/titles" tag={Link}>
-                    <i className="fa fa-list"></i> {" "}
+                    <i className="fa fa-list"></i>
                     Thư viện Rom-Com
                   </NavLink>
                 </NavItem>
@@ -96,7 +96,7 @@ function DemoNavbar() {
               <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                 <NavItem>
                   <NavLink to="/title/add" tag={Link}>
-                  <i className="fa fa-plus-circle"></i> {" "}
+                  <i className="fa fa-plus-circle"></i>
                     Thêm Rom-Com mới
                   </NavLink>
                 </NavItem>

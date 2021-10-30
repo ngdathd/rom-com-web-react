@@ -21,7 +21,9 @@ import HeaderSection from "../UI/HeaderSection";
 const Title = ({ match }) => {
 	console.log("detail", match);
 	const initTitle = {
-		title: "",
+		title: {
+			en: ""
+		},
 		tags: [],
 		coverURL: "img/theme/img-1-1200x1000.jpg",
 		links: {
@@ -67,7 +69,7 @@ const Title = ({ match }) => {
 					</Col>
 					<Col>
 						<div className="h1 text-white font-weight-bold text-xs-center text-md-left">
-							{title.title}
+							{title.title.en}
 						</div>
 						{title.tags.map((tag) => <Badge color="secondary" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
 						<p className="lead text-white">

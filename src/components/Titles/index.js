@@ -65,7 +65,7 @@ const Titles = () => {
                       />
                     </Col>
                     <Col className="pl-2">
-                    <CardTitle tag="h5" className="mb-1">{t.title}</CardTitle>
+                    <CardTitle tag="h5" className="mb-1">{t.title.en}</CardTitle>
                     {t.tags.map((tag, idx) => <Badge key={idx} color="success" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
                     <CardText tag="small" className="mb-2 d-block">{t.description?.length > 150 ? t.description?.slice(0,150) + "..." : t.description}</CardText>
                     <Button color="success" size="sm" to={`/title/${t.id}`} tag={Link}>Chi tiết</Button>

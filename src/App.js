@@ -20,8 +20,6 @@ import Title from "./components/Title/index.js";
 import AuthProvider from "./Context/AuthProvider";
 
 export default function App() {
-  const mainEle = useRef();
-
   useEffect(() => {
     window.scrollTo(0, 0);
     // mainEle.current.scrollTop = 0;
@@ -32,20 +30,17 @@ export default function App() {
       <AuthProvider>
         {/* <AppProvider> */}
         <DemoNavBar />
-        <Switch>
-          <main ref={mainEle}>
+        <main>
+          <Switch>
             <Route path="/titles" component={Titles} />
             <Route exact path="/title/add">
-              <AddTitle/>
+              <AddTitle />
             </Route>
-            {/* <Route path="/title/:id">
-              <Title/>
-            </Route> */}
             <Route path="/title/:id" component={Title} />
             <Route path="/login" component={Login} />
             <Route path="/" exact component={HomePage} />
-          </main>
-        </Switch>
+          </Switch>
+        </main>
         {/* <AddRoomModal />
         <InviteMemberModal /> */}
         {/* </AppProvider> */}
