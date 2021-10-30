@@ -21,14 +21,12 @@ export default function AuthProvider({ children }) {
           photoURL
         });
         setIsLoading(false);
-        // history.push("/");
+        console.log("ahaihai")
         return;
       }
-
       // reset user info
       setUser({});
       setIsLoading(false);
-      history.push("/");
     });
 
     // clean function

@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Link } from "react-router-dom";
 // JavaScript plugin that hides or shows a component based on your scroll
 import Headroom from "headroom.js";
@@ -27,10 +28,14 @@ import { auth } from "../firebase/config";
 import { AuthContext } from "./../Context/AuthProvider";
 
 function DemoNavbar() {
+  const history = useHistory();
   const { user } = useContext(AuthContext);
   const [collapseClasses, setCollapseClasses] = useState("");
   const [collapseOpen, setCollapseOpen] = useState(false);
-
+  const handleSignOut = async () => {
+    await auth.signOut();
+    history.push("/");
+  }
   useEffect(() => {
     let headroom = new Headroom(document.getElementById("navbar-main"));
     // initialise
@@ -173,10 +178,10 @@ function DemoNavbar() {
                       <Button
                         className="btn-neutral btn-icon"
                         color="default"
-                        onClick={() => {auth.signOut()}}
+                        onClick={handleSignOut}
                       >
                         <span className="btn-inner--icon">
-                          <i className="fa fa-cloud-download mr-2" />
+                        <img src={user.photoURL} className="d-inline rounded-circle img-center img-fluid shadow" width="10"/>
                         </span>
                         <span className="nav-link-inner--text ml-1">
                           Đăng xuất

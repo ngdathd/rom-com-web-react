@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import {
   Button,
   Card,
@@ -39,11 +39,11 @@ export default function Login() {
     history.push("/");
   };
 
-  const user = useContext(AuthContext);
-  if (user.uid) {
-    history.push("/");
-    return;
-  }
+  useEffect(() => {
+    const { currentUser } = firebase.auth();
+    if (currentUser) history.replace('/');
+  })
+  
   return (
     <>
 
