@@ -26,7 +26,7 @@ export default function Login() {
 
   const handleFbLogin = async () => {
     const { additionalUserInfo, user } = await auth.signInWithPopup(fbProvider);
-    console.log({user});
+
     if (additionalUserInfo?.isNewUser) {
       db.collection("users").add({
         displayName: user.displayName,
@@ -36,6 +36,7 @@ export default function Login() {
         providerId: additionalUserInfo.providerId
       });
     }
+    history.push("/");
   };
 
   const user = useContext(AuthContext);

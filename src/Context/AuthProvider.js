@@ -21,7 +21,7 @@ export default function AuthProvider({ children }) {
           photoURL
         });
         setIsLoading(false);
-        history.push("/");
+        // history.push("/");
         return;
       }
 

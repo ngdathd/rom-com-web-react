@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import {
   Row,
   Col,
@@ -26,13 +26,16 @@ const Titles = () => {
       // Loop through the data and store
       // it in array to display
       querySnapshot.forEach(element => {
-        var data = element.data();
+        var data = {...element.data(), id: element.id};
         setTitles(arr => [...arr, data]);
       });
     })
   }
   useEffect(() => {
     Fetchdata();
+    return () => {
+      setTitles([]);
+    }
   }, [])
   return (
     <>
@@ -49,7 +52,7 @@ const Titles = () => {
       </HeaderSection>
       <section className="section section-lg pt-lg-0 mt--200">
         <Container>
-          <Row>
+        <Row>
             {titles.map((t, i) => (
               <Col key={i} md="6" className="mb-2" key={i}>
                 <Card className="p-2">
@@ -63,9 +66,10 @@ const Titles = () => {
                     </Col>
                     <Col className="pl-2">
                     <CardTitle tag="h5" className="mb-1">{t.title}</CardTitle>
-                    {t.tags.map((tag) => <Badge color="success" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
-                    <CardText>{t.description?.length > 100 ? t.description?.slice(0,100) + "..." : t.description}</CardText>
-                    <Button>Chi tiết</Button>
+                    {t.tags.map((tag, idx) => <Badge key={idx} color="success" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
+                    <CardText tag="small" className="mb-2 d-block">{t.description?.length > 150 ? t.description?.slice(0,150) + "..." : t.description}</CardText>
+                    <Button color="success" size="sm" to={`/title/${t.id}`} tag={Link}>Chi tiết</Button>
+                    <Button color="danger" size="sm">Yêu thích</Button>
                     </Col>
                   </Row>
                 </Card>
