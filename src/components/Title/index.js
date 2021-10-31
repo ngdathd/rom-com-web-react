@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import parse from 'html-react-parser';
+
 import {
 	Row,
 	Col,
@@ -19,16 +21,17 @@ import { db } from "./../../firebase/config";
 import HeaderSection from "../UI/HeaderSection";
 
 const Title = ({ match }) => {
-	console.log("detail", match);
 	const initTitle = {
 		title: {
 			en: ""
 		},
+		genres: [],
 		tags: [],
-		coverURL: "img/theme/img-1-1200x1000.jpg",
+		coverArt: ["img/theme/img-1-1200x1000.jpg"],
 		links: {
 			md: ""
-		}
+		},
+		description: ""
 	}
 	const [title, setTitle] = useState(initTitle);
 	const Fetchdata = () => {
@@ -51,7 +54,7 @@ const Title = ({ match }) => {
 						<Row>
 							<Col xs="9" md="12" className="mx-auto">
 								<img className="img-fluid rounded shadow w-100 mx-auto"
-									src={title.coverURL}
+									src={title.coverArt[1] || title.coverArt[0]}
 								/>
 								<Button
 									className="d-block mx-auto shadow btn-icon"
@@ -71,9 +74,9 @@ const Title = ({ match }) => {
 						<div className="h1 text-white font-weight-bold text-xs-center text-md-left">
 							{title.title.en}
 						</div>
-						{title.tags.map((tag) => <Badge color="secondary" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
+						{title.genres.map((tag) => <Badge color="secondary" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
 						<p className="lead text-white">
-							{title.description}
+							{parse(title.description)}
 						</p>
 					</Col>
 				</Row>
