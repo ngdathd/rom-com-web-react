@@ -190,7 +190,7 @@ class Landing extends React.Component {
                 <img
                   alt="..."
                   className="img-fluid floating"
-                  src="img/theme/promo-1.png"
+                  src="/img/theme/promo-1.png"
                 />
               </Col>
               <Col className="order-md-1" md="6">
@@ -267,7 +267,7 @@ class Landing extends React.Component {
                 <Card className="bg-default shadow border-0">
                   <CardImg
                     alt="..."
-                    src="img/theme/img-1-1200x1000.jpg"
+                    src="/img/theme/img-1-1200x1000.jpg"
                     top
                   />
                   <blockquote className="card-blockquote">
@@ -339,7 +339,7 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="img-center img-fluid"
-                    src="img/ill/ill-2.svg"
+                    src="/img/ill/ill-2.svg"
                   />
                 </div>
               </Col>
@@ -453,7 +453,7 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                    src="img/theme/team-1-800x800.jpg"
+                    src="/img/theme/team-1-800x800.jpg"
                     style={{ width: "200px" }}
                   />
                   <div className="pt-4 text-center">
@@ -495,7 +495,7 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                    src="img/theme/team-2-800x800.jpg"
+                    src="/img/theme/team-2-800x800.jpg"
                     style={{ width: "200px" }}
                   />
                   <div className="pt-4 text-center">
@@ -539,7 +539,7 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                    src="img/theme/team-3-800x800.jpg"
+                    src="/img/theme/team-3-800x800.jpg"
                     style={{ width: "200px" }}
                   />
                   <div className="pt-4 text-center">
@@ -581,7 +581,7 @@ class Landing extends React.Component {
                   <img
                     alt="..."
                     className="rounded-circle img-center img-fluid shadow shadow-lg--hover"
-                    src="img/theme/team-4-800x800.jpg"
+                    src="/img/theme/team-4-800x800.jpg"
                     style={{ width: "200px" }}
                   />
                   <div className="pt-4 text-center">

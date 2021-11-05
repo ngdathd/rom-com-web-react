@@ -75,7 +75,7 @@ export default function Login() {
                         <span className="btn-inner--icon mr-1">
                           <img
                             alt="..."
-                            src="img/icons/common/github.svg"
+                            src="/img/icons/common/github.svg"
                           />
                         </span>
                         <span className="btn-inner--text">Facebook</span>
@@ -89,7 +89,7 @@ export default function Login() {
                         <span className="btn-inner--icon mr-1">
                           <img
                             alt="..."
-                            src="img/icons/common/google.svg"
+                            src="/img/icons/common/google.svg"
                           />
                         </span>
                         <span className="btn-inner--text">Google</span>

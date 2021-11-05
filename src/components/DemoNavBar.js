@@ -63,7 +63,7 @@ function DemoNavbar() {
         >
           <Container>
             <NavbarBrand className="mr-lg-5" to="/" tag={Link}>
-              <img alt="..." src="img/brand/argon-react-white.png" />
+              <img alt="..." src="/img/brand/argon-react-white.png" />
             </NavbarBrand>
             <button className="navbar-toggler" id="navbar_global">
               <span className="navbar-toggler-icon" />
@@ -98,15 +98,22 @@ function DemoNavbar() {
                   </NavLink>
                 </NavItem>
               </Nav>
-              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
+              {/* <Nav className="navbar-nav-hover align-items-lg-center" navbar>
                 <NavItem>
                   <NavLink to="/title/add" tag={Link}>
                   <i className="fa fa-plus-circle"></i>
                     Thêm Rom-Com mới
                   </NavLink>
                 </NavItem>
+              </Nav> */}
+              <Nav className="navbar-nav-hover align-items-lg-center" navbar>
+                <NavItem>
+                  <NavLink to="/titles/favorite" tag={Link}>
+                  <i className="fa fa-heart"></i>
+                    Rom-Com yêu thích
+                  </NavLink>
+                </NavItem>
               </Nav>
-
               <Nav className="align-items-lg-center ml-lg-auto" navbar>
                 <NavItem>
                   <NavLink
