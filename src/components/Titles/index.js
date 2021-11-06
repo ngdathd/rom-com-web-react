@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
+import queryString from 'query-string';
+
 import {
   Row,
   Col,
@@ -18,17 +21,26 @@ const Titles = () => {
   const perPage = 10;
   
   const [titles, setTitles] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [firstId, setFirstId] = useState();
   const [lastId, setLastId] = useState();
   const [isMin, setIsMin] = useState(true);
   const [isMax, setIsMax] = useState(false);
 
+  const urlParams = new URLSearchParams(useLocation().search);
+  
+  let initQuery = () => {
+    let initQuery = db.collection("titles").orderBy("id");
+    const type = urlParams.get("type");
+    console.log(type);
+    if (type) initQuery = initQuery.where("type", "==", type);
+    return initQuery;
+  }
+
   const dispatch = useDispatch();
   const favoriteTitles = useSelector(state => state.favoriteTitles);
   
   const FetchPrevData = (firstId) => {
-    let query = db.collection("titles").orderBy("id").endBefore(firstId);
+    let query = initQuery().endBefore(firstId);
     query.limit(perPage).get().then((querySnapshot) => {
       if (querySnapshot.size === 0) {
         setIsMin(true);
@@ -49,7 +61,7 @@ const Titles = () => {
   }
 
   const FetchNextData = (id) => {
-    let query = db.collection("titles").orderBy("id");
+    let query = initQuery();
     if (id) query = query.startAfter(id);
     query.limit(perPage).get().then((querySnapshot) => {
 

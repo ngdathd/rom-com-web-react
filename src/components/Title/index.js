@@ -1,41 +1,35 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import parse from 'html-react-parser';
+import { useDispatch, useSelector } from "react-redux";
+
 
 import {
 	Row,
 	Col,
 	Card,
-	CardImg,
-	CardText,
 	CardBody,
-	CardTitle,
-	CardSubtitle,
 	Button,
 	Badge,
 	Container
 } from "reactstrap";
 
-import { db } from "./../../firebase/config";
+import { db } from "firebase/config";
 
 import HeaderSection from "../UI/HeaderSection";
+import classNames from "classnames";
+import defaultCover from "assets/img/default-cover.jpg";
+import { toggleFavoriteTitle } from "slices/title";
+
+import { DEFAULT_TITLE } from "Constants";
+
 
 const Title = ({ match }) => {
-	const initTitle = {
-		title: {
-			en: ""
-		},
-		genres: [],
-		tags: [],
-		coverArt: ["/img/theme/img-1-1200x1000.jpg"],
-		links: {
-			md: "",
-			vi: []
-		},
-		description: ""
-	}
-	const [title, setTitle] = useState(initTitle);
-	const [showMore, setShowMore] = useState(false);
+
+	const [title, setTitle] = useState(DEFAULT_TITLE);
+
+	const dispatch = useDispatch();
+	const favoriteTitles = useSelector(state => state.favoriteTitles);
 
 	const Fetchdata = () => {
 		db.collection("titles").doc(match.params.id).get().then((doc) => {
@@ -46,9 +40,13 @@ const Title = ({ match }) => {
 	useEffect(() => {
 		Fetchdata();
 		return () => {
-			setTitle(initTitle);
+			setTitle(DEFAULT_TITLE);
 		}
 	}, [])
+
+	const handleLikeClick = (id) => {
+		dispatch(toggleFavoriteTitle(id));
+	}
 
 	return (
 		<>
@@ -90,13 +88,45 @@ const Title = ({ match }) => {
 						<Col>
 							<div className="btn-wrapper d-flex justify-content-around flex-wrap">
 								<Button
-									className="shadow btn-icon mb-1"
-									color="danger"
+									className="d-block shadow btn-icon mb-1"
+									color={favoriteTitles.includes(title.id) ? "white" : "danger"}
+									onClick={() => { handleLikeClick(title.id) }}
+								>
+									{
+										favoriteTitles.includes(title.id) ?
+											<><span className="btn-inner--icon">
+												<i className="fa fa-heart-broken" />
+											</span>
+												<span className="btn-inner--text d-none d-md-inline">Hết thích</span>
+											</> :
+											<><span className="btn-inner--icon">
+												<i className="fa fa-heart" />
+											</span>
+												<span className="btn-inner--text d-none d-md-inline">Yêu thích</span>
+											</>
+									}
+								</Button>
+								<Button
+									className="d-block shadow btn-icon mb-1"
+									color="white"
+									to={`/title/${title.id}/edit`}
+									tag={Link}
 								>
 									<span className="btn-inner--icon">
-										<i className="fa fa-heart" />
+										<i className="fa fa-pen" />
 									</span>
-									<span className="btn-inner--text d-none d-md-inline">Yêu thích</span>
+									<span className="btn-inner--text d-none d-md-inline">Sửa</span>
+								</Button>
+								<Button
+									className="d-block shadow btn-icon mb-1"
+									color="white"
+									href={`https://www.google.com/search?q=${encodeURI(title.title.en)}`}
+									target="_blank"
+								>
+									<span className="btn-inner--icon">
+										<i className="fab fa-google" />
+									</span>
+									<span className="btn-inner--text d-none d-md-inline">Sớt google</span>
 								</Button>
 							</div>
 							<div className="btn-wrapper d-flex justify-content-around flex-wrap">
@@ -147,7 +177,7 @@ const Title = ({ match }) => {
 									<Button
 										className="shadow btn-icon mb-1"
 										color="default"
-										href={"https://www.mangaupdates.com/series.html?id="+title.links.mu}
+										href={"https://www.mangaupdates.com/series.html?id=" + title.links.mu}
 										target="_blank"
 									>
 										<span className="btn-inner--icon">

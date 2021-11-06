@@ -1,4 +1,4 @@
-export const TAGS = [
+export const GENRES = [
 	"action",
 	"adult",
 	"adventure",
@@ -36,3 +36,27 @@ export const TAGS = [
 	"yaoi",
 	"yuri"
 ]
+
+import defaultCover from "assets/img/default-cover.jpg";
+
+export const DEFAULT_TITLE = {
+	coverArt: [defaultCover],
+	title: {
+		en: "",
+		vi: "",
+		ja: ""
+	},
+	author: [],
+	artist: [],
+	description: "",
+	genres: ['romance', 'comedy'],
+	tags: [],
+	links: {
+		md: "",
+		mu: "",
+		vi: [],
+	}
+}
+
+export const TITLE_TYPES = ["manga", "anime", "novel"]
+

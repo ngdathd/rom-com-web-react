@@ -15,7 +15,6 @@ import TitleItem from "./TitleItem";
 import { toggleFavoriteTitle } from "slices/title";
 
 const FavoriteTitles = () => {
-	console.log("hello");
 	const dispatch = useDispatch();
 	const favoriteTitles = useSelector(state => state.favoriteTitles);
 

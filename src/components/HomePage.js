@@ -1,6 +1,7 @@
 import React from "react";
 // nodejs library that concatenates classes
 import classnames from "classnames";
+import { Link } from "react-router-dom";
 
 import HeaderSection from "./UI/HeaderSection";
 
@@ -31,35 +32,36 @@ class Landing extends React.Component {
       <>
         <HeaderSection>
           <h1 className="display-3 text-white">
-            A beautiful Design System{" "}
-            <span>completed with examples</span>
+            Project ReactJS đầu tay của{" "}
+            <span>của Zennomi</span>
           </h1>
           <p className="lead text-white">
-            The design system comes with four pre-built pages to
-            help you get started faster. You can change the text and
-            images and you're good to go.
+            Tất tần tật những gì tôi đã xem và đọc.
           </p>
           <div className="btn-wrapper">
             <Button
               className="btn-icon mb-3 mb-sm-0"
               color="info"
-              href="https://demos.creative-tim.com/argon-design-system-react/#/documentation/alerts?ref=adsr-landing-page"
+              to="/titles"
+              tag={Link}
             >
               <span className="btn-inner--icon mr-1">
-                <i className="fa fa-code" />
+                <i className="fa fa-list" />
               </span>
-              <span className="btn-inner--text">Components</span>
+              <span className="btn-inner--text">Thư viện Rom-Com</span>
             </Button>
             <Button
               className="btn-white btn-icon mb-3 mb-sm-0 ml-1"
               color="default"
-              href="https://www.creative-tim.com/product/argon-design-system-react?ref=adsr-landing-page"
+              to="/title/add"
+              tag={Link}
+
             >
               <span className="btn-inner--icon mr-1">
-                <i className="ni ni-cloud-download-95" />
+                <i className="fa fa-plus-circle" />
               </span>
               <span className="btn-inner--text">
-                Download React
+                Thêm Rom-Com mới
               </span>
             </Button>
           </div>
@@ -77,31 +79,18 @@ class Landing extends React.Component {
                           <i className="ni ni-check-bold" />
                         </div>
                         <h6 className="text-primary text-uppercase">
-                          Download Argon
+                          Tiểu thuyết
                         </h6>
                         <p className="description mt-3">
-                          Argon is a great free UI package based on Bootstrap
-                          4 that includes the most important components and
-                          features.
+                          Light Novel, Web Novel hay thậm chí cả tác phẩm Việt Nam và nước ngoài mang yếu tố Rom-Com
                         </p>
-                        <div>
-                          <Badge color="primary" pill className="mr-1">
-                            design
-                          </Badge>
-                          <Badge color="primary" pill className="mr-1">
-                            system
-                          </Badge>
-                          <Badge color="primary" pill className="mr-1">
-                            creative
-                          </Badge>
-                        </div>
                         <Button
                           className="mt-4"
                           color="primary"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          to="/titles?type=novel"
+                          tag={Link}
                         >
-                          Learn more
+                          Xem ngay
                         </Button>
                       </CardBody>
                     </Card>
@@ -113,31 +102,18 @@ class Landing extends React.Component {
                           <i className="ni ni-istanbul" />
                         </div>
                         <h6 className="text-success text-uppercase">
-                          Build Something
+                          Truyện tranh
                         </h6>
                         <p className="description mt-3">
-                          Argon is a great free UI package based on Bootstrap
-                          4 that includes the most important components and
-                          features.
+                          Manga Manhwa Manhua phang hết, miễn là có Rom-Com
                         </p>
-                        <div>
-                          <Badge color="success" pill className="mr-1">
-                            business
-                          </Badge>
-                          <Badge color="success" pill className="mr-1">
-                            vision
-                          </Badge>
-                          <Badge color="success" pill className="mr-1">
-                            success
-                          </Badge>
-                        </div>
                         <Button
                           className="mt-4"
                           color="success"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          to="/titles?type=manga"
+                          tag={Link}
                         >
-                          Learn more
+                          Xem ngay
                         </Button>
                       </CardBody>
                     </Card>
@@ -149,31 +125,18 @@ class Landing extends React.Component {
                           <i className="ni ni-planet" />
                         </div>
                         <h6 className="text-warning text-uppercase">
-                          Prepare Launch
+                          Phim
                         </h6>
                         <p className="description mt-3">
-                          Argon is a great free UI package based on Bootstrap
-                          4 that includes the most important components and
-                          features.
+                          Anime, phim hài lãng mạn, quất hết
                         </p>
-                        <div>
-                          <Badge color="warning" pill className="mr-1">
-                            marketing
-                          </Badge>
-                          <Badge color="warning" pill className="mr-1">
-                            product
-                          </Badge>
-                          <Badge color="warning" pill className="mr-1">
-                            launch
-                          </Badge>
-                        </div>
                         <Button
                           className="mt-4"
                           color="warning"
-                          href="#pablo"
-                          onClick={(e) => e.preventDefault()}
+                          to="/titles?type=anime"
+                          tag={Link}
                         >
-                          Learn more
+                          Xem ngay
                         </Button>
                       </CardBody>
                     </Card>

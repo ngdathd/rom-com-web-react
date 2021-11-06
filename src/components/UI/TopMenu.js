@@ -24,10 +24,10 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
-import { auth } from "../firebase/config";
-import { AuthContext } from "./../Context/AuthProvider";
+import { auth } from "../../firebase/config";
+import { AuthContext } from "../../Context/AuthProvider";
 
-function DemoNavbar() {
+function TopMenu() {
   const history = useHistory();
   const { user } = useContext(AuthContext);
   const [collapseClasses, setCollapseClasses] = useState("");
@@ -218,4 +218,4 @@ function DemoNavbar() {
   );
 }
 
-export default DemoNavbar;
+export default TopMenu;

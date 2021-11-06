@@ -1,8 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit';
 
+const locallFavoriteTitles = localStorage.getItem('favoriteTitles');
+
+
 const favoriteTitles = createSlice({
 	name: 'favoriteTitles',
-	initialState: [],
+	initialState: locallFavoriteTitles ? locallFavoriteTitles.split(";") : [],
 	reducers: {
 		toggleFavoriteTitle: (state, action) => {
 			if (state.includes(action.payload))

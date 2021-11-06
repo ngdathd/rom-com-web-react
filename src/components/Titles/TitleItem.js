@@ -33,7 +33,7 @@ const TitleItem = ({ title, favoriteTitles, onLikeClick }) => {
 					<CardTitle tag="h4" className="mb-1 text-primary">
 						{title.title.en}
 						{" "}
-						{title.type && <Badge size="sm" color="primary">{title.type}</Badge>}
+						{title.type && <Badge size="sm" color="primary" tag={Link} to={`/titles?type=${title.type}`}>{title.type}</Badge>}
 					</CardTitle>
 					<div className="mb-1">
 						{title.genres.map((tag, idx) => <Badge key={idx} color="secondary" tag={Link} to="#" className="mr-1">{tag}</Badge>)}
@@ -46,8 +46,13 @@ const TitleItem = ({ title, favoriteTitles, onLikeClick }) => {
 					<Button className="btn-icon" color="success" size="sm" to={`/title/${title.id}`} tag={Link}>
 						<i className="fa fa-eye" /> Chi tiết
 					</Button>
-					<Button className="btn-icon" color={classNames({warning: favoriteTitles.includes(title.id)}, "danger")} size="sm" onClick={() => {onLikeClick(title.id)}}>
-						{favoriteTitles.includes(title.id) ? (<><i className="fa fa-heart-broken" /> Hết thích</>) : (<><i className="fa fa-heart" /> Yêu thích</>) }
+					<Button
+						className="btn-icon"
+						color={favoriteTitles.includes(title.id) ? "white" : "danger"}
+						size="sm"
+						onClick={() => { onLikeClick(title.id) }}
+					>
+						{favoriteTitles.includes(title.id) ? (<><i className="fa fa-heart-broken" /> Hết thích</>) : (<><i className="fa fa-heart" /> Yêu thích</>)}
 					</Button>
 				</div>
 			</Row>
